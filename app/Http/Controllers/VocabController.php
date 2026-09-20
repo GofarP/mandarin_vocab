@@ -72,7 +72,7 @@ class VocabController extends Controller
     {
         $vocab->update($request->validated());
 
-        return redirect()->route('vocabs.index')
+        return redirect()->back()
             ->with('success', 'Kosakata berhasil diperbarui!');
     }
 
@@ -83,7 +83,7 @@ class VocabController extends Controller
     {
         $vocab->delete();
 
-        return redirect()->route('vocabs.index')
+        return redirect()->back()
             ->with('success', 'Kosakata berhasil dihapus!');
     }
 }

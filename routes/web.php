@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     // Practice routes
     Route::get('/practice', [PracticeController::class, 'index'])->name('practice.index');
     Route::post('/practice/{vocab}/status', [PracticeController::class, 'updateStatus'])->name('practice.status');
+    Route::post('/practice/brain-dump', [PracticeController::class, 'storeBrainDump'])->name('practice.braindump');
+    Route::get('/practice/search-hanzi', [PracticeController::class, 'searchHanzi'])->name('practice.search-hanzi');
 
     Route::get('/dashboard', function () {
         return redirect()->route('vocabs.index');

@@ -240,7 +240,7 @@ export default function Index({
                                 <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
                                     <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
                                         <div className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">
-                                            {auth.user?.name?.charAt(0).toUpperCase() || 'U'}
+                                            {auth.user?.name ? auth.user.name.charAt(0).toUpperCase() : 'U'}
                                         </div>
                                         <span className="font-medium max-w-[120px] truncate">
                                             {auth.user?.name}
