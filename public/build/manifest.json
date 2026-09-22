@@ -1,0 +1,280 @@
+{
+  "_AuthenticatedLayout-vbnUYH3W.js": {
+    "file": "assets/AuthenticatedLayout-vbnUYH3W.js",
+    "name": "AuthenticatedLayout",
+    "imports": [
+      "resources/js/app.tsx",
+      "_transition-BIjcNVFj.js"
+    ]
+  },
+  "_DeleteConfirmModal-qKmv1Cv6.js": {
+    "file": "assets/DeleteConfirmModal-qKmv1Cv6.js",
+    "name": "DeleteConfirmModal",
+    "imports": [
+      "resources/js/app.tsx",
+      "_createLucideIcon-ChnIFbyN.js"
+    ]
+  },
+  "_GuestLayout-UYIXR77l.js": {
+    "file": "assets/GuestLayout-UYIXR77l.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_InputError-ChbWE1zn.js": {
+    "file": "assets/InputError-ChbWE1zn.js",
+    "name": "InputError",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_InputLabel-Bbeum8nw.js": {
+    "file": "assets/InputLabel-Bbeum8nw.js",
+    "name": "InputLabel",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_PrimaryButton-CBEAJwVS.js": {
+    "file": "assets/PrimaryButton-CBEAJwVS.js",
+    "name": "PrimaryButton",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_TextInput-Cdk2mtzN.js": {
+    "file": "assets/TextInput-Cdk2mtzN.js",
+    "name": "TextInput",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_arrow-right-Cpv7erVU.js": {
+    "file": "assets/arrow-right-Cpv7erVU.js",
+    "name": "arrow-right",
+    "imports": [
+      "_createLucideIcon-ChnIFbyN.js"
+    ]
+  },
+  "_createLucideIcon-ChnIFbyN.js": {
+    "file": "assets/createLucideIcon-ChnIFbyN.js",
+    "name": "createLucideIcon",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_log-in-V_3I19Uv.js": {
+    "file": "assets/log-in-V_3I19Uv.js",
+    "name": "log-in",
+    "imports": [
+      "_createLucideIcon-ChnIFbyN.js"
+    ]
+  },
+  "_transition-BIjcNVFj.js": {
+    "file": "assets/transition-BIjcNVFj.js",
+    "name": "transition",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.tsx": {
+    "file": "assets/ConfirmPassword-DM5ryQUs.js",
+    "name": "ConfirmPassword",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_InputLabel-Bbeum8nw.js",
+      "_PrimaryButton-CBEAJwVS.js",
+      "_TextInput-Cdk2mtzN.js",
+      "_GuestLayout-UYIXR77l.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.tsx": {
+    "file": "assets/ForgotPassword-DhuO-BTJ.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_PrimaryButton-CBEAJwVS.js",
+      "_TextInput-Cdk2mtzN.js",
+      "_GuestLayout-UYIXR77l.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.tsx": {
+    "file": "assets/Login-D6cVgX4-.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_GuestLayout-UYIXR77l.js",
+      "_log-in-V_3I19Uv.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.tsx": {
+    "file": "assets/Register-CJrTGC7d.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_GuestLayout-UYIXR77l.js",
+      "_createLucideIcon-ChnIFbyN.js",
+      "_arrow-right-Cpv7erVU.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.tsx": {
+    "file": "assets/ResetPassword-BZveFR_g.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_InputLabel-Bbeum8nw.js",
+      "_PrimaryButton-CBEAJwVS.js",
+      "_TextInput-Cdk2mtzN.js",
+      "_GuestLayout-UYIXR77l.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.tsx": {
+    "file": "assets/VerifyEmail-V7vCBcC4.js",
+    "name": "VerifyEmail",
+    "src": "resources/js/Pages/Auth/VerifyEmail.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_PrimaryButton-CBEAJwVS.js",
+      "_GuestLayout-UYIXR77l.js"
+    ]
+  },
+  "resources/js/Pages/Dashboard.tsx": {
+    "file": "assets/Dashboard-C-oJ0eUg.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Dashboard.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_AuthenticatedLayout-vbnUYH3W.js"
+    ]
+  },
+  "resources/js/Pages/Practice/Index.tsx": {
+    "file": "assets/Index-BB8k9iWy.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Practice/Index.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_createLucideIcon-ChnIFbyN.js",
+      "_arrow-right-Cpv7erVU.js",
+      "_DeleteConfirmModal-qKmv1Cv6.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Edit.tsx": {
+    "file": "assets/Edit-CreRg8S7.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Profile/Edit.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_AuthenticatedLayout-vbnUYH3W.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx": {
+    "file": "assets/DeleteUserForm-B1F2G_VF.js",
+    "name": "DeleteUserForm",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_InputLabel-Bbeum8nw.js",
+      "_TextInput-Cdk2mtzN.js",
+      "_transition-BIjcNVFj.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx": {
+    "file": "assets/UpdatePasswordForm-D-rVzSzu.js",
+    "name": "UpdatePasswordForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_InputLabel-Bbeum8nw.js",
+      "_PrimaryButton-CBEAJwVS.js",
+      "_TextInput-Cdk2mtzN.js",
+      "_transition-BIjcNVFj.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx": {
+    "file": "assets/UpdateProfileInformationForm-C6C0RT8o.js",
+    "name": "UpdateProfileInformationForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_InputError-ChbWE1zn.js",
+      "_InputLabel-Bbeum8nw.js",
+      "_PrimaryButton-CBEAJwVS.js",
+      "_TextInput-Cdk2mtzN.js",
+      "_transition-BIjcNVFj.js"
+    ]
+  },
+  "resources/js/Pages/Vocabs/Index.tsx": {
+    "file": "assets/Index-D6cROA1A.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Vocabs/Index.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_createLucideIcon-ChnIFbyN.js",
+      "_DeleteConfirmModal-qKmv1Cv6.js",
+      "_log-in-V_3I19Uv.js"
+    ]
+  },
+  "resources/js/Pages/Welcome.tsx": {
+    "file": "assets/Welcome-DM50RGVt.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-BjtyW9-t.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/ConfirmPassword.tsx",
+      "resources/js/Pages/Auth/ForgotPassword.tsx",
+      "resources/js/Pages/Auth/Login.tsx",
+      "resources/js/Pages/Auth/Register.tsx",
+      "resources/js/Pages/Auth/ResetPassword.tsx",
+      "resources/js/Pages/Auth/VerifyEmail.tsx",
+      "resources/js/Pages/Dashboard.tsx",
+      "resources/js/Pages/Practice/Index.tsx",
+      "resources/js/Pages/Profile/Edit.tsx",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.tsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.tsx",
+      "resources/js/Pages/Vocabs/Index.tsx",
+      "resources/js/Pages/Welcome.tsx"
+    ],
+    "css": [
+      "assets/app-D4hhRvYJ.css"
+    ]
+  }
+}
