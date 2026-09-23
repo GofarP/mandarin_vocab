@@ -360,8 +360,8 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                     <Trophy className="w-12 h-12 text-emerald-400" />
                                 </div>
                                 <div>
-                                    <h2 className="text-3xl font-black text-white mb-2">Sesi Kuis Selesai!</h2>
-                                    <p className="text-slate-400 dark:text-slate-500 dark:text-slate-400 max-w-md mx-auto">
+                                    <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-2">Sesi Kuis Selesai!</h2>
+                                    <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto">
                                         Anda telah menjawab semua kosakata acak di sesi ini. Coba Mode Tulis Bebas untuk menguji perbendaharaan Anda sendiri!
                                     </p>
                                 </div>
@@ -396,7 +396,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
 
                                     {quizMode === 'zh-id' ? (
                                         <div className="text-center w-full">
-                                            <div className="text-7xl sm:text-[100px] leading-tight font-chinese font-black text-white mb-4 select-text">
+                                            <div className="text-7xl sm:text-[100px] leading-tight font-chinese font-black text-slate-900 dark:text-white mb-4 select-text">
                                                 {currentVocab.hanzi}
                                             </div>
                                             <div className="text-xl sm:text-2xl font-bold text-rose-400 tracking-wider">
@@ -405,7 +405,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                         </div>
                                     ) : (
                                         <div className="text-center w-full">
-                                            <div className="text-2xl sm:text-4xl font-bold text-white mb-4 leading-tight">
+                                            <div className="text-2xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
                                                 {currentVocab.meaning}
                                             </div>
                                             <div className="text-slate-400 dark:text-slate-500 dark:text-slate-400 font-medium text-sm">
@@ -430,7 +430,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                                 ? isCorrect 
                                                     ? 'border-emerald-500 text-emerald-400 bg-emerald-500/10' 
                                                     : 'border-rose-500 text-rose-400 bg-rose-500/10'
-                                                : 'border-slate-300 dark:border-slate-700 text-white focus:border-rose-500 focus:bg-slate-900'
+                                                : 'border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:border-rose-500 focus:bg-slate-100 dark:focus:bg-slate-900'
                                             }`}
                                     />
                                     
@@ -452,14 +452,14 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                     <div className={`p-5 sm:p-6 rounded-2xl border ${isCorrect ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-rose-500/10 border-rose-500/30'} animate-fadeIn flex flex-col gap-4`}>
                                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                                             <div>
-                                                <div className={`text-xl sm:text-2xl font-bold flex items-center gap-2 mb-3 ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}`}>
+                                                <div className={`text-xl sm:text-2xl font-bold flex items-center gap-2 mb-3 ${isCorrect ? 'text-emerald-500 dark:text-emerald-400' : 'text-rose-500 dark:text-rose-400'}`}>
                                                     {isCorrect ? <Check className="w-6 h-6 sm:w-7 sm:h-7" /> : <X className="w-6 h-6 sm:w-7 sm:h-7" />}
                                                     {isCorrect ? 'Benar!' : 'Jawaban yang benar:'}
                                                 </div>
-                                                <div className="text-white space-y-1.5">
+                                                <div className="text-slate-900 dark:text-white space-y-1.5">
                                                     <div className="text-3xl font-chinese font-bold">{currentVocab.hanzi}</div>
-                                                    <div className="text-lg font-medium text-rose-400">{currentVocab.pinyin}</div>
-                                                    <div className="text-sm font-mono text-amber-300/80">baca: {currentVocab.dibaca?.trim() || pinyinToIndonesianReading(currentVocab.pinyin)}</div>
+                                                    <div className="text-lg font-medium text-rose-500 dark:text-rose-400">{currentVocab.pinyin}</div>
+                                                    <div className="text-sm font-mono text-amber-600 dark:text-amber-300/80">baca: {currentVocab.dibaca?.trim() || pinyinToIndonesianReading(currentVocab.pinyin)}</div>
                                                     <div className="text-base text-slate-700 dark:text-slate-300 mt-2 font-medium">{currentVocab.meaning}</div>
                                                 </div>
                                             </div>
@@ -503,7 +503,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                     <div className="w-full flex flex-col gap-6 animate-fadeIn mt-6">
                         
                         <div className="text-center space-y-3 mb-4">
-                            <h2 className="text-2xl sm:text-3xl font-black text-white">Catatan Kosakata</h2>
+                            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">Catatan Kosakata</h2>
                             <p className="text-slate-400 dark:text-slate-500 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
                                 Tambahkan kosakata yang baru Anda pelajari atau ingat hari ini. Sistem akan menambahkannya ke dalam perbendaharaan Anda.
                             </p>
@@ -529,7 +529,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                             onKeyDown={handleBrainDumpKeyDown}
                                             disabled={dumpProcessing}
                                             placeholder="misal: zao shang"
-                                            className="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 dark:text-slate-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                                            className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 dark:text-slate-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                                         />
                                     </div>
                                     <div className="space-y-1.5">
@@ -541,7 +541,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                             onKeyDown={handleBrainDumpKeyDown}
                                             disabled={dumpProcessing}
                                             placeholder="misal: pagi hari"
-                                            className="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 dark:text-slate-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                                            className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 dark:text-slate-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
                                         />
                                     </div>
                                 </div>
@@ -556,7 +556,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                         onKeyDown={handleBrainDumpKeyDown}
                                         disabled={dumpProcessing}
                                         placeholder="misal: 早上"
-                                        className="w-full bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-white placeholder:text-slate-400 dark:text-slate-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all font-chinese"
+                                        className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-900 dark:text-white placeholder:text-slate-400 dark:text-slate-500 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all font-chinese"
                                     />
                                 </div>
 
@@ -610,13 +610,13 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                         {/* List of successfully remembered words */}
                         {historicalVocabs.length > 0 && (
                             <div className="mt-8 animate-fadeIn overflow-hidden bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-2xl shadow-xl">
-                                <div className="flex items-center gap-2 text-sm font-bold text-white uppercase tracking-widest p-4 border-b border-slate-300/80 dark:border-slate-700/80 bg-slate-950/50">
-                                    <MessageCircle className="w-4 h-4 text-emerald-400" />
+                                <div className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest p-4 border-b border-slate-300/80 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-950/50">
+                                    <MessageCircle className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
                                     Riwayat Kosakata Hafalan ({historicalVocabs.length})
                                 </div>
                                 <div className="overflow-x-auto">
-                                    <table className="w-full text-left text-sm text-slate-300">
-                                        <thead className="bg-slate-100/80 dark:bg-slate-950/80 text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 dark:text-slate-400 border-b border-slate-800">
+                                    <table className="w-full text-left text-sm text-slate-700 dark:text-slate-300">
+                                        <thead className="bg-slate-100/80 dark:bg-slate-950/80 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
                                             <tr>
                                                 <th className="py-4 px-6 font-semibold">Hanzi</th>
                                                 <th className="py-4 px-6 font-semibold">Pinyin</th>
@@ -625,16 +625,16 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                                 <th className="py-4 px-6 font-semibold text-right">Aksi</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="divide-y divide-slate-800/60">
+                                        <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60">
                                             {historicalVocabs.map((v) => (
-                                                <tr key={v.id} className="hover:bg-slate-800/40 transition-colors animate-slideIn">
-                                                    <td className="py-3 px-6 font-chinese text-2xl font-bold text-white">
+                                                <tr key={v.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors animate-slideIn">
+                                                    <td className="py-3 px-6 font-chinese text-2xl font-bold text-slate-900 dark:text-white">
                                                         {v.hanzi}
                                                     </td>
-                                                    <td className="py-3 px-6 font-medium text-emerald-400">
+                                                    <td className="py-3 px-6 font-medium text-emerald-600 dark:text-emerald-400">
                                                         {v.pinyin}
                                                     </td>
-                                                    <td className="py-3 px-6 text-slate-200">
+                                                    <td className="py-3 px-6 text-slate-700 dark:text-slate-200">
                                                         {v.meaning}
                                                     </td>
                                                     <td className="py-3 px-6 text-center">
