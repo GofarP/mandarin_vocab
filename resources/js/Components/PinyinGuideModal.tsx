@@ -77,9 +77,9 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
 
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
-            <div className="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div className="relative w-full max-w-4xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
                 {/* Modal Header */}
-                <div className="p-6 border-b border-slate-800 bg-slate-950/80 flex items-start justify-between gap-4">
+                <div className="p-6 border-b border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/80 flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
                         <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center text-white font-chinese text-2xl font-bold shadow-lg shadow-rose-600/30 flex-shrink-0">
                             音
@@ -93,7 +93,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                     汉语拼音
                                 </span>
                             </div>
-                            <p className="text-xs text-slate-400 mt-0.5">
+                            <p className="text-xs text-slate-400 dark:text-slate-500 dark:text-slate-400 mt-0.5">
                                 Pelajari cara melafalkan huruf konsonan, vokal, dan nada Mandarin sesuai ejaan bunyi latin Indonesia.
                             </p>
                         </div>
@@ -102,7 +102,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                     <button
                         type="button"
                         onClick={onClose}
-                        className="p-2 text-slate-400 hover:text-white rounded-xl hover:bg-slate-800 transition-colors"
+                        className="p-2 text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white rounded-xl hover:bg-slate-100 dark:bg-slate-800 transition-colors"
                         title="Tutup"
                     >
                         <X className="w-5 h-5" />
@@ -110,30 +110,30 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                 </div>
 
                 {/* Quick Rule Banner (The user's key highlight: p->ph, g->k, d->t, b->p) */}
-                <div className="px-6 py-3 bg-gradient-to-r from-rose-950/40 via-slate-900 to-amber-950/30 border-b border-slate-800 text-xs text-slate-300 flex flex-wrap items-center justify-between gap-2">
+                <div className="px-6 py-3 bg-gradient-to-r from-rose-950/40 via-slate-900 to-amber-950/30 border-b border-slate-200 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 flex flex-wrap items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-rose-400 flex-shrink-0" />
                         <span className="font-semibold text-rose-300">Kunci Pelafalan Utama:</span>
                         <span className="text-slate-300">
-                            <strong className="text-white font-mono bg-slate-800 px-1.5 py-0.5 rounded">p</strong> dibaca <span className="text-amber-300 font-bold">ph</span> •{' '}
-                            <strong className="text-white font-mono bg-slate-800 px-1.5 py-0.5 rounded">g</strong> dibaca <span className="text-amber-300 font-bold">k</span> •{' '}
-                            <strong className="text-white font-mono bg-slate-800 px-1.5 py-0.5 rounded">d</strong> dibaca <span className="text-amber-300 font-bold">t</span> •{' '}
-                            <strong className="text-white font-mono bg-slate-800 px-1.5 py-0.5 rounded">b</strong> dibaca <span className="text-amber-300 font-bold">p</span>
+                            <strong className="text-white font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">p</strong> dibaca <span className="text-amber-300 font-bold">ph</span> •{' '}
+                            <strong className="text-white font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">g</strong> dibaca <span className="text-amber-300 font-bold">k</span> •{' '}
+                            <strong className="text-white font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">d</strong> dibaca <span className="text-amber-300 font-bold">t</span> •{' '}
+                            <strong className="text-white font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">b</strong> dibaca <span className="text-amber-300 font-bold">p</span>
                         </span>
                     </div>
                 </div>
 
                 {/* Navigation Tabs & Search */}
-                <div className="p-4 border-b border-slate-800 bg-slate-900/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/60 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                     {/* Tabs */}
-                    <div className="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 text-xs font-semibold">
+                    <div className="inline-flex rounded-xl bg-slate-100 dark:bg-slate-950 p-1 border border-slate-200 dark:border-slate-800 text-xs font-semibold">
                         <button
                             type="button"
                             onClick={() => setActiveTab('initials')}
                             className={`px-3 py-1.5 rounded-lg transition-all ${
                                 activeTab === 'initials'
                                     ? 'bg-rose-600 text-white shadow-md'
-                                    : 'text-slate-400 hover:text-white'
+                                    : 'text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                             }`}
                         >
                             Konsonan ({PINYIN_INITIALS.length})
@@ -144,7 +144,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                             className={`px-3 py-1.5 rounded-lg transition-all ${
                                 activeTab === 'finals'
                                     ? 'bg-rose-600 text-white shadow-md'
-                                    : 'text-slate-400 hover:text-white'
+                                    : 'text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                             }`}
                         >
                             Vokal ({PINYIN_FINALS.length})
@@ -155,7 +155,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                             className={`px-3 py-1.5 rounded-lg transition-all ${
                                 activeTab === 'tones'
                                     ? 'bg-rose-600 text-white shadow-md'
-                                    : 'text-slate-400 hover:text-white'
+                                    : 'text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                             }`}
                         >
                             4 Nada (声调)
@@ -166,7 +166,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                             className={`px-3 py-1.5 rounded-lg transition-all ${
                                 activeTab === 'cheatSheet'
                                     ? 'bg-rose-600 text-white shadow-md'
-                                    : 'text-slate-400 hover:text-white'
+                                    : 'text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                             }`}
                         >
                             Tips Kilat
@@ -182,13 +182,13 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
                                 placeholder="Cari huruf (misal: p, g, d)..."
-                                className="w-full pl-9 pr-8 py-1.5 bg-slate-950/80 border border-slate-800 rounded-xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
+                                className="w-full pl-9 pr-8 py-1.5 bg-slate-100/80 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 rounded-xl text-xs text-white placeholder:text-slate-400 dark:text-slate-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
                             />
                             {searchQuery && (
                                 <button
                                     type="button"
                                     onClick={() => setSearchQuery('')}
-                                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white"
                                 >
                                     <X className="w-3.5 h-3.5" />
                                 </button>
@@ -213,7 +213,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                     return (
                                         <div
                                             key={item.letter}
-                                            className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between gap-3"
+                                            className="p-4 rounded-2xl bg-slate-950/60 border border-slate-200/80 dark:border-slate-800/80 hover:border-slate-300 dark:border-slate-700 transition-all flex flex-col justify-between gap-3"
                                         >
                                             <div>
                                                 <div className="flex items-start justify-between gap-3">
@@ -242,7 +242,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                         className={`p-2.5 rounded-xl border transition-all ${
                                                             isPlayingLetter
                                                                 ? 'bg-rose-600 text-white border-rose-500 shadow-lg shadow-rose-600/30 scale-105'
-                                                                : 'bg-slate-900 text-slate-300 border-slate-800 hover:bg-rose-500/20 hover:text-rose-400'
+                                                                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-rose-500/20 hover:text-rose-400'
                                                         }`}
                                                         title={`Dengarkan bunyi huruf konsonan '${item.letter}'`}
                                                     >
@@ -250,13 +250,13 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                     </button>
                                                 </div>
 
-                                                <p className="mt-3 text-xs text-slate-300 leading-relaxed">
+                                                <p className="mt-3 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                                                     {item.explanation}
                                                 </p>
                                             </div>
 
                                             {/* Dedicated Sound Buttons for Mandarin, Latin Reading & Meaning */}
-                                            <div className="pt-3 border-t border-slate-900/90 bg-slate-900/50 p-2.5 rounded-xl space-y-2">
+                                            <div className="pt-3 border-t border-slate-900/90 bg-white/50 dark:bg-slate-900/50 p-2.5 rounded-xl space-y-2">
                                                 {/* Row 1: Mandarin Sample Word + Clickable Latin Reading + Sound Button */}
                                                 <div className="flex items-center justify-between gap-2">
                                                     <div className="flex items-center gap-1.5 flex-wrap">
@@ -272,7 +272,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                             className={`font-mono text-[11px] px-2 py-0.5 rounded border transition-all inline-flex items-center gap-1 cursor-pointer ${
                                                                 isPlayingIndoReading
                                                                     ? 'bg-amber-500 text-slate-950 font-bold border-amber-400 scale-105 shadow-sm'
-                                                                    : 'bg-slate-950 text-amber-300/90 border-slate-800 hover:bg-amber-500/20 hover:text-amber-200'
+                                                                    : 'bg-slate-100 dark:bg-slate-950 text-amber-300/90 border-slate-200 dark:border-slate-800 hover:bg-amber-500/20 hover:text-amber-200'
                                                             }`}
                                                             title={`Klik untuk mendengarkan lafal bacaan latin Indonesia: ${item.exampleIndoReading}`}
                                                         >
@@ -298,7 +298,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
 
                                                 {/* Row 2: Indonesian Meaning + Sound Button */}
                                                 <div className="flex items-center justify-between gap-2 pt-1.5 border-t border-slate-900">
-                                                    <span className="text-slate-300 text-xs font-medium truncate" title={item.exampleMeaning}>
+                                                    <span className="text-slate-700 dark:text-slate-300 text-xs font-medium truncate" title={item.exampleMeaning}>
                                                         Arti: <strong className="text-slate-100">{item.exampleMeaning}</strong>
                                                     </span>
 
@@ -338,7 +338,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                     return (
                                         <div
                                             key={item.letter}
-                                            className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between gap-3"
+                                            className="p-4 rounded-2xl bg-slate-950/60 border border-slate-200/80 dark:border-slate-800/80 hover:border-slate-300 dark:border-slate-700 transition-all flex flex-col justify-between gap-3"
                                         >
                                             <div>
                                                 <div className="flex items-start justify-between gap-3">
@@ -367,7 +367,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                         className={`p-2.5 rounded-xl border transition-all ${
                                                             isPlayingLetter
                                                                 ? 'bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-600/30 scale-105'
-                                                                : 'bg-slate-900 text-slate-300 border-slate-800 hover:bg-amber-500/20 hover:text-amber-400'
+                                                                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-amber-500/20 hover:text-amber-400'
                                                         }`}
                                                         title={`Dengarkan bunyi huruf vokal '${item.letter}'`}
                                                     >
@@ -375,13 +375,13 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                     </button>
                                                 </div>
 
-                                                <p className="mt-3 text-xs text-slate-300 leading-relaxed">
+                                                <p className="mt-3 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                                                     {item.explanation}
                                                 </p>
                                             </div>
 
                                             {/* Dedicated Sound Buttons for Mandarin, Latin Reading & Meaning */}
-                                            <div className="pt-3 border-t border-slate-900/90 bg-slate-900/50 p-2.5 rounded-xl space-y-2">
+                                            <div className="pt-3 border-t border-slate-900/90 bg-white/50 dark:bg-slate-900/50 p-2.5 rounded-xl space-y-2">
                                                 {/* Row 1: Mandarin Sample Word + Clickable Latin Reading + Sound Button */}
                                                 <div className="flex items-center justify-between gap-2">
                                                     <div className="flex items-center gap-1.5 flex-wrap">
@@ -397,7 +397,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                             className={`font-mono text-[11px] px-2 py-0.5 rounded border transition-all inline-flex items-center gap-1 cursor-pointer ${
                                                                 isPlayingIndoReading
                                                                     ? 'bg-amber-500 text-slate-950 font-bold border-amber-400 scale-105 shadow-sm'
-                                                                    : 'bg-slate-950 text-amber-300/90 border-slate-800 hover:bg-amber-500/20 hover:text-amber-200'
+                                                                    : 'bg-slate-100 dark:bg-slate-950 text-amber-300/90 border-slate-200 dark:border-slate-800 hover:bg-amber-500/20 hover:text-amber-200'
                                                             }`}
                                                             title={`Klik untuk mendengarkan lafal bacaan latin Indonesia: ${item.exampleIndoReading}`}
                                                         >
@@ -423,7 +423,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
 
                                                 {/* Row 2: Indonesian Meaning + Sound Button */}
                                                 <div className="flex items-center justify-between gap-2 pt-1.5 border-t border-slate-900">
-                                                    <span className="text-slate-300 text-xs font-medium truncate" title={item.exampleMeaning}>
+                                                    <span className="text-slate-700 dark:text-slate-300 text-xs font-medium truncate" title={item.exampleMeaning}>
                                                         Arti: <strong className="text-slate-100">{item.exampleMeaning}</strong>
                                                     </span>
 
@@ -457,7 +457,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                     <Music className="w-4 h-4 text-rose-400" />
                                     Pentingnya 4 Nada Bahasa Mandarin
                                 </h3>
-                                <p className="text-xs text-slate-300 leading-relaxed">
+                                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                                     Bahasa Mandarin adalah bahasa bernada (*tonal language*). Satu suku kata yang sama (misal <strong>ma</strong>) dapat memiliki arti yang sepenuhnya berbeda tergantung pada nada yang digunakan!
                                 </p>
                             </div>
@@ -468,14 +468,14 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                     return (
                                         <div
                                             key={tone.toneNumber}
-                                            className="p-5 rounded-2xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between"
+                                            className="p-5 rounded-2xl bg-slate-950/60 border border-slate-200 dark:border-slate-800 flex flex-col justify-between"
                                         >
                                             <div>
                                                 <div className="flex items-center justify-between">
                                                     <span className="text-xs font-bold text-rose-400 uppercase tracking-wider">
                                                         {tone.name}
                                                     </span>
-                                                    <span className="px-2 py-0.5 rounded-lg bg-slate-800 text-slate-300 font-mono text-xs font-bold">
+                                                    <span className="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-xs font-bold">
                                                         {tone.contour}
                                                     </span>
                                                 </div>
@@ -501,7 +501,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                         className={`p-2 rounded-xl border transition-all ${
                                                             isPlaying
                                                                 ? 'bg-rose-600 text-white border-rose-500'
-                                                                : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-rose-500/20 hover:text-rose-400'
+                                                                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:bg-rose-500/20 hover:text-rose-400'
                                                         }`}
                                                         title={`Dengarkan nada '${tone.samplePinyin}'`}
                                                     >
@@ -509,7 +509,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                                     </button>
                                                 </div>
 
-                                                <p className="text-xs text-slate-300 leading-relaxed">
+                                                <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                                                     {tone.description}
                                                 </p>
                                             </div>
@@ -528,12 +528,12 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                     <Sparkles className="w-4 h-4 text-amber-400" />
                                     Tabel Hafalan Kilat Bagi Orang Indonesia
                                 </h3>
-                                <p className="text-xs text-slate-300 mb-4 leading-relaxed">
+                                <p className="text-xs text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
                                     Berikut rumus paling mudah untuk mengingat bunyi konsonan Pinyin yang berpasangan:
                                 </p>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-800">
                                         <div className="text-rose-400 font-bold mb-1">1. Pasangan B & P</div>
                                         <div className="text-slate-300">
                                             • <strong className="text-white">B</strong> dibaca seperti <span className="text-amber-300 font-bold">P</span> (tanpa angin)<br />
@@ -541,7 +541,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                         </div>
                                     </div>
 
-                                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-800">
                                         <div className="text-rose-400 font-bold mb-1">2. Pasangan D & T</div>
                                         <div className="text-slate-300">
                                             • <strong className="text-white">D</strong> dibaca seperti <span className="text-amber-300 font-bold">T</span> (tanpa angin)<br />
@@ -549,7 +549,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                         </div>
                                     </div>
 
-                                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-800">
                                         <div className="text-rose-400 font-bold mb-1">3. Pasangan G & K</div>
                                         <div className="text-slate-300">
                                             • <strong className="text-white">G</strong> dibaca seperti <span className="text-amber-300 font-bold">K</span> (tanpa angin)<br />
@@ -557,7 +557,7 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                         </div>
                                     </div>
 
-                                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-800">
                                         <div className="text-rose-400 font-bold mb-1">4. Pasangan J & Q & X</div>
                                         <div className="text-slate-300">
                                             • <strong className="text-white">J</strong> dibaca seperti <span className="text-amber-300 font-bold">C</span> (senyum lebar)<br />
@@ -566,9 +566,9 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                                         </div>
                                     </div>
 
-                                    <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 sm:col-span-2">
+                                    <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 sm:col-span-2">
                                         <div className="text-rose-400 font-bold mb-1">5. Huruf "E" Mandarin</div>
-                                        <div className="text-slate-300 leading-relaxed">
+                                        <div className="text-slate-700 dark:text-slate-300 leading-relaxed">
                                             Huruf <strong className="text-white">E</strong> dalam bahasa Mandarin hampir selalu dibaca sebagai <strong>"e pepet"</strong> (seperti pada kata <em>teman, belum, senang</em>), BUKAN seperti "e taling" (pada kata <em>bebek, lele</em>).
                                         </div>
                                     </div>
@@ -579,14 +579,14 @@ export default function PinyinGuideModal({ isOpen, onClose }: PinyinGuideModalPr
                 </div>
 
                 {/* Modal Footer */}
-                <div className="p-4 border-t border-slate-800 bg-slate-950/80 flex items-center justify-between">
+                <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/80 flex items-center justify-between">
                     <span className="text-xs text-slate-500">
                         Tips: Anda juga dapat mendengarkan pelafalan langsung pada setiap kartu kosakata.
                     </span>
                     <button
                         type="button"
                         onClick={onClose}
-                        className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition-colors"
+                        className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-white text-xs font-semibold transition-colors"
                     >
                         Tutup Panduan
                     </button>

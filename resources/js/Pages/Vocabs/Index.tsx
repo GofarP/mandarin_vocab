@@ -150,7 +150,7 @@ export default function Index({
     };
 
     return (
-        <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col selection:bg-rose-500 selection:text-white">
+        <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 flex flex-col selection:bg-rose-500 selection:text-white">
             <Head title="Buku Kosakata Mandarin - Hanzi, Pinyin & Arti" />
 
             {/* High-performance ambient background glows via zero-cost CSS radial gradients */}
@@ -180,40 +180,40 @@ export default function Index({
             )}
 
             {/* Header & Navigation */}
-            <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-[#090d16]/95 backdrop-blur-xl shadow-lg shadow-black/30">
+            <header className="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-[#090d16]/95 backdrop-blur-xl shadow-lg shadow-black/30">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <Link href={route('home')} className="flex items-center gap-3 group">
-                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-rose-600/30 font-chinese text-2xl font-bold group-hover:scale-105 transition-transform">
+                        <Link href={route('home')} className="flex items-center gap-2 sm:gap-3 group">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-rose-600 via-rose-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-rose-600/30 font-chinese text-xl sm:text-2xl font-bold group-hover:scale-105 transition-transform flex-shrink-0">
                                 汉
                             </div>
-                            <div>
-                                <div className="flex items-center gap-2">
-                                    <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white">
+                            <div className="flex flex-col">
+                                <div className="flex items-center gap-1.5 sm:gap-2">
+                                    <h1 className="text-lg sm:text-2xl font-black tracking-tight text-white leading-none">
                                         Hanzi<span className="text-rose-500">Vocab</span>
                                     </h1>
-                                    <span className="px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30">
+                                    <span className="hidden sm:inline-flex px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30 whitespace-nowrap">
                                         华语生词本
                                     </span>
                                 </div>
-                                <p className="text-xs text-slate-400">
+                                <p className="hidden sm:block mt-1 text-xs text-slate-400">
                                     Catatan kosakata bahasa Mandarin (Hanzi · Pinyin · Arti)
                                 </p>
                             </div>
                         </Link>
                     </div>
 
-                    <div className="flex items-center gap-2.5 sm:gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                         {/* Pinyin Phonetic Guide Button */}
                         <button
                             type="button"
                             onClick={() => setIsPinyinGuideOpen(true)}
-                            className="inline-flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-amber-500/50 hover:bg-amber-500/10 text-amber-300 text-xs sm:text-sm font-semibold shadow-sm transition-all"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-300/80 dark:border-slate-700/80 hover:border-amber-500/50 hover:bg-amber-500/10 text-amber-300 text-xs sm:text-sm font-semibold shadow-sm transition-all whitespace-nowrap"
                             title="Buka Panduan Bunyi Huruf Pinyin (Konsonan, Vokal & 4 Nada)"
                         >
                             <Volume2 className="w-4 h-4 text-amber-400" />
                             <span className="hidden sm:inline">Panduan Bunyi</span>
-                            <span className="sm:hidden font-chinese text-sm">拼音</span>
+                            <span className="sm:hidden font-medium">Pinyin</span>
                         </button>
 
                         {isUserLoggedIn ? (
@@ -238,7 +238,7 @@ export default function Index({
                                 </button>
 
                                 <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
-                                    <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
+                                    <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-300">
                                         <div className="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">
                                             {auth.user?.name ? auth.user.name.charAt(0).toUpperCase() : 'U'}
                                         </div>
@@ -250,7 +250,7 @@ export default function Index({
                                     <button
                                         type="button"
                                         onClick={handleLogout}
-                                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 text-xs font-semibold transition-all"
+                                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/20 text-xs font-semibold transition-all"
                                         title="Keluar (Logout)"
                                     >
                                         <LogOut className="w-4 h-4" />
@@ -261,9 +261,9 @@ export default function Index({
                         ) : (
                             <Link
                                 href={route('login')}
-                                className="inline-flex items-center gap-2 px-4 py-2 sm:px-4.5 sm:py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-rose-600/30 transition-all"
+                                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4.5 sm:py-2.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-rose-600/30 transition-all whitespace-nowrap"
                             >
-                                <LogIn className="w-4 h-4" />
+                                <LogIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                                 <span>Masuk</span>
                             </Link>
                         )}
@@ -274,7 +274,7 @@ export default function Index({
             {/* Main Content */}
             <main className="relative z-0 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
                 {/* Hero / Statistics Banner */}
-                <div className="relative overflow-hidden rounded-3xl p-6 sm:p-8 border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-950 shadow-2xl">
+                <div className="relative overflow-hidden rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/80 to-slate-950 shadow-2xl">
                     <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div className="space-y-2 max-w-2xl">
                             <div className="flex flex-wrap items-center gap-2">
@@ -294,7 +294,7 @@ export default function Index({
                             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                                 Kuasai Kosakata Mandarin Harian Anda
                             </h2>
-                            <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+                            <p className="text-sm sm:text-base text-slate-400 dark:text-slate-500 dark:text-slate-400 leading-relaxed">
                                 {isUserLoggedIn
                                     ? `Halo ${auth.user?.name}! Anda dapat menambah, mengedit, mendengarkan audio pelafalan, serta menghapus kosakata sesuka Anda.`
                                     : 'Jelajahi koleksi kosakata Mandarin lengkap dengan Hanzi, Pinyin, dan artinya. Masuk ke akun Anda untuk mulai menambah, mengubah, atau menghapus kata.'}
@@ -302,7 +302,7 @@ export default function Index({
                         </div>
 
                         {/* Quick Stats Counter */}
-                        <div className="flex items-center gap-4 bg-slate-950/70 border border-slate-800 p-4 rounded-2xl flex-shrink-0">
+                        <div className="flex items-center gap-4 bg-slate-950/70 border border-slate-200 dark:border-slate-800 p-4 rounded-2xl flex-shrink-0">
                             <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
                                 <BookMarked className="w-6 h-6" />
                             </div>
@@ -322,13 +322,13 @@ export default function Index({
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                     {/* Search Input */}
                     <div className="relative flex-1 max-w-lg">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500 dark:text-slate-400 pointer-events-none" />
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Cari Hanzi (你好), Pinyin (ni hao / nihao / nǐ hǎo), atau Arti (halo)..."
-                            className="w-full pl-11 pr-12 py-3 bg-slate-900/80 border border-slate-800 rounded-2xl text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all shadow-inner"
+                            className="w-full pl-11 pr-12 py-3 bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm text-white placeholder:text-slate-400 dark:text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all shadow-inner"
                         />
                         <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
                             {isDebouncing && (
@@ -338,7 +338,7 @@ export default function Index({
                                 <button
                                     type="button"
                                     onClick={handleClearSearch}
-                                    className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors"
+                                    className="text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-100 dark:bg-slate-800 transition-colors"
                                     title="Bersihkan pencarian"
                                 >
                                     <X className="w-4 h-4" />
@@ -356,7 +356,7 @@ export default function Index({
                             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                                 showPhonetics
                                     ? 'bg-amber-500/15 border-amber-500/30 text-amber-300 shadow-sm'
-                                    : 'bg-slate-900/80 border-slate-800 text-slate-400 hover:text-white'
+                                    : 'bg-slate-900/80 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                             }`}
                             title="Tampilkan / sembunyikan bantuan cara baca latin Indonesia"
                         >
@@ -365,7 +365,7 @@ export default function Index({
                             <span className="text-[11px] font-bold">{showPhonetics ? 'ON' : 'OFF'}</span>
                         </button>
 
-                        <span className="text-xs font-medium text-slate-400 hidden sm:inline">
+                        <span className="text-xs font-medium text-slate-400 dark:text-slate-500 dark:text-slate-400 hidden sm:inline">
                             <span className="text-white font-bold">{vocabs.total}</span> kata
                         </span>
 
@@ -376,7 +376,7 @@ export default function Index({
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                                     viewMode === 'grid'
                                         ? 'bg-rose-600 text-white shadow-md'
-                                        : 'text-slate-400 hover:text-white'
+                                        : 'text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                                 }`}
                                 title="Tampilan Kartu (Grid)"
                             >
@@ -389,7 +389,7 @@ export default function Index({
                                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                                     viewMode === 'table'
                                         ? 'bg-rose-600 text-white shadow-md'
-                                        : 'text-slate-400 hover:text-white'
+                                        : 'text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white'
                                 }`}
                                 title="Tampilan Tabel (List)"
                             >
@@ -418,10 +418,10 @@ export default function Index({
                             </div>
                         ) : (
                             /* Compact Table View */
-                            <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/90 shadow-xl">
+                            <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-xl">
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-sm text-slate-300">
-                                        <thead className="bg-slate-950/80 text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">
+                                        <thead className="bg-slate-100/80 dark:bg-slate-950/80 text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 dark:text-slate-400 border-b border-slate-800">
                                             <tr>
                                                 <th className="py-4 px-6 font-semibold">Hanzi (汉字)</th>
                                                 <th className="py-4 px-6 font-semibold">Pinyin</th>
@@ -453,14 +453,14 @@ export default function Index({
                                                     <td className="py-4 px-6 font-medium text-slate-200">
                                                         {vocab.meaning}
                                                     </td>
-                                                    <td className="py-4 px-6 text-xs text-slate-400 max-w-xs truncate">
+                                                    <td className="py-4 px-6 text-xs text-slate-400 dark:text-slate-500 dark:text-slate-400 max-w-xs truncate">
                                                         {vocab.notes || '-'}
                                                     </td>
                                                     <td className="py-4 px-6 text-center">
                                                         <button
                                                             type="button"
                                                             onClick={(e) => playAudio(vocab.hanzi, e)}
-                                                            className="p-2 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-300 hover:text-rose-400 transition-colors inline-flex items-center justify-center"
+                                                            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-rose-500/20 text-slate-700 dark:text-slate-300 hover:text-rose-400 transition-colors inline-flex items-center justify-center"
                                                             title="Dengarkan Suara"
                                                         >
                                                             <Volume2 className="w-4 h-4" />
@@ -471,14 +471,14 @@ export default function Index({
                                                             <div className="inline-flex items-center gap-1">
                                                                 <button
                                                                     onClick={() => handleOpenEditModal(vocab)}
-                                                                    className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-amber-400/10 transition-colors"
+                                                                    className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-amber-400 hover:bg-amber-400/10 transition-colors"
                                                                     title="Edit"
                                                                 >
                                                                     <Edit2 className="w-4 h-4" />
                                                                 </button>
                                                                 <button
                                                                     onClick={() => handleOpenDeleteModal(vocab)}
-                                                                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-400/10 transition-colors"
+                                                                    className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-rose-400 hover:bg-rose-400/10 transition-colors"
                                                                     title="Hapus"
                                                                 >
                                                                     <Trash2 className="w-4 h-4" />
@@ -497,14 +497,14 @@ export default function Index({
                     </div>
                 ) : (
                     /* Empty State */
-                    <div className="text-center py-16 px-4 rounded-3xl border border-dashed border-slate-800 bg-slate-950/40">
+                    <div className="text-center py-16 px-4 rounded-3xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-950/40">
                         <div className="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mx-auto mb-4 font-chinese text-2xl font-bold">
                             空
                         </div>
                         <h3 className="text-lg font-bold text-white mb-1">
                             {debouncedSearchQuery ? 'Tidak Ada Kosakata yang Cocok' : 'Belum Ada Kosakata Tersimpan'}
                         </h3>
-                        <p className="text-sm text-slate-400 max-w-sm mx-auto mb-6">
+                        <p className="text-sm text-slate-400 dark:text-slate-500 dark:text-slate-400 max-w-sm mx-auto mb-6">
                             {debouncedSearchQuery
                                 ? `Tidak ditemukan kosakata dengan kata kunci "${debouncedSearchQuery}". Anda dapat mencoba mencari dengan pinyin tanpa tanda nada (misal "ni hao" atau "nihao") atau artinya.`
                                 : isUserLoggedIn
@@ -515,7 +515,7 @@ export default function Index({
                             <button
                                 type="button"
                                 onClick={handleClearSearch}
-                                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-sm font-medium transition-colors"
+                                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-sm font-medium transition-colors"
                             >
                                 <X className="w-4 h-4" />
                                 Bersihkan Pencarian
@@ -532,7 +532,7 @@ export default function Index({
                         ) : (
                             <Link
                                 href={route('login')}
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-rose-500 text-white font-semibold text-sm transition-all"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-rose-500 text-white font-semibold text-sm transition-all"
                             >
                                 <LogIn className="w-4 h-4 text-rose-500" />
                                 Masuk untuk Menambahkan Kosakata
@@ -543,7 +543,7 @@ export default function Index({
             </main>
 
             {/* Footer */}
-            <footer className="relative z-10 border-t border-slate-800/80 bg-slate-950/60 py-6 mt-12 text-center text-xs text-slate-500">
+            <footer className="relative z-10 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-950/60 py-6 mt-12 text-center text-xs text-slate-500">
                 <p>
                     HanziVocab · Dibangun dengan Laravel, Inertia.js, React, TypeScript & MySQL
                 </p>

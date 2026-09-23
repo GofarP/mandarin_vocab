@@ -26,7 +26,7 @@ export default function DrawingCanvas({ backgroundText, onDrawStart, onClear }: 
         const newWriters = chars.map((char, index) => {
             // Create a wrapper div for each character
             const div = document.createElement('div');
-            div.className = "relative bg-slate-900 rounded-xl border border-slate-700/50 shadow-inner shrink-0 transition-colors duration-300";
+            div.className = "relative bg-white dark:bg-slate-900 rounded-xl border border-slate-700/50 shadow-inner shrink-0 transition-colors duration-300";
             
             // Add Tian Zi Ge grid background
             div.innerHTML = `
@@ -147,7 +147,7 @@ export default function DrawingCanvas({ backgroundText, onDrawStart, onClear }: 
                 <button
                     type="button"
                     onClick={handleRestart}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-slate-300 bg-slate-700/50 hover:bg-slate-600 hover:text-white transition-all font-medium text-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-slate-700 dark:text-slate-300 bg-slate-700/50 hover:bg-slate-600 hover:text-white transition-all font-medium text-sm"
                 >
                     <RefreshCcw className="w-4 h-4" />
                     Ulangi Kuis Goresan

@@ -126,11 +126,11 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
             <div
-                className="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl shadow-rose-950/20 overflow-hidden flex flex-col"
+                className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-700/80 rounded-3xl shadow-2xl shadow-rose-950/20 overflow-hidden flex flex-col"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Modal Header */}
-                <div className="flex items-center justify-between px-6 py-5 border-b border-slate-800 bg-slate-900/80">
+                <div className="flex items-center justify-between px-6 py-5 border-b border-slate-200 dark:border-slate-800 bg-slate-900/80">
                     <div className="flex items-center gap-2.5">
                         <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-rose-600/30">
                             <Sparkles className="w-5 h-5" />
@@ -147,7 +147,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                     <button
                         type="button"
                         onClick={onClose}
-                        className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        className="p-2 rounded-xl text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-100 dark:bg-slate-800 transition-colors"
                     >
                         <X className="w-5 h-5" />
                     </button>
@@ -168,12 +168,12 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                                 {data.pinyin || <span className="text-slate-600">pīnyīn</span>}
                             </div>
                             {(data.dibaca || data.pinyin) && (
-                                <div className="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950/80 border border-slate-800 text-xs font-mono text-amber-300">
-                                    <span className="text-slate-500 font-sans text-[10px] uppercase font-semibold">baca:</span>
+                                <div className="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100/80 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 text-xs font-mono text-amber-300">
+                                    <span className="text-slate-400 dark:text-slate-500 font-sans text-[10px] uppercase font-semibold">baca:</span>
                                     <span className="font-bold tracking-wide">[ {data.dibaca?.trim() || pinyinToIndonesianReading(data.pinyin)} ]</span>
                                 </div>
                             )}
-                            <div className="text-slate-200 font-medium text-sm mt-2 min-h-[20px]">
+                            <div className="text-slate-800 dark:text-slate-200 font-medium text-sm mt-2 min-h-[20px]">
                                 {data.meaning || <span className="text-slate-600">Arti kata...</span>}
                             </div>
                         </div>
@@ -204,7 +204,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                             onChange={(e) => setData('hanzi', e.target.value)}
                             onKeyDown={handleKeyDown}
                             placeholder="Contoh: 你好 atau 学习"
-                            className="w-full px-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white font-chinese text-xl placeholder:text-slate-600 placeholder:font-sans focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all"
+                            className="w-full px-4 py-3 bg-slate-100 dark:bg-slate-950 border border-slate-300/80 dark:border-slate-700/80 rounded-xl text-white font-chinese text-xl placeholder:text-slate-600 placeholder:font-sans focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all"
                             autoComplete="off"
                             required
                         />
@@ -228,7 +228,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                             value={data.pinyin}
                             onChange={(e) => handlePinyinChange(e.target.value)}
                             placeholder="Contoh: nǐ hǎo atau xué xí"
-                            className="w-full px-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white font-medium placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all mb-2"
+                            className="w-full px-4 py-3 bg-slate-100 dark:bg-slate-950 border border-slate-300/80 dark:border-slate-700/80 rounded-xl text-white font-medium placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all mb-2"
                             autoComplete="off"
                             required
                         />
@@ -263,7 +263,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                             value={data.dibaca}
                             onChange={(e) => setData('dibaca', e.target.value)}
                             placeholder="Contoh: pa pa (bàba), phing kwo (píngguǒ), kwo (guǒ)"
-                            className="w-full px-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-amber-300 font-mono text-sm placeholder:text-slate-600 placeholder:font-sans focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500/60 transition-all"
+                            className="w-full px-4 py-3 bg-slate-100 dark:bg-slate-950 border border-slate-300/80 dark:border-slate-700/80 rounded-xl text-amber-300 font-mono text-sm placeholder:text-slate-600 placeholder:font-sans focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500/60 transition-all"
                             autoComplete="off"
                         />
                         <div className="mt-1 flex items-center justify-between text-[11px] text-slate-500">
@@ -276,7 +276,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
 
                     {/* Meaning Input */}
                     <div>
-                        <label htmlFor="meaning-input" className="block text-sm font-semibold text-slate-200 mb-1.5">
+                        <label htmlFor="meaning-input" className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">
                             Arti / Makna <span className="text-rose-500">*</span>
                         </label>
                         <textarea
@@ -285,7 +285,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                             value={data.meaning}
                             onChange={(e) => setData('meaning', e.target.value)}
                             placeholder="Contoh: Halo / Apa kabar"
-                            className="w-full px-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all resize-none"
+                            className="w-full px-4 py-3 bg-slate-100 dark:bg-slate-950 border border-slate-300/80 dark:border-slate-700/80 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all resize-none"
                             required
                         />
                         {errors.meaning && (
@@ -295,7 +295,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
 
                     {/* Optional Notes */}
                     <div>
-                        <label htmlFor="notes-input" className="block text-sm font-semibold text-slate-200 mb-1.5">
+                        <label htmlFor="notes-input" className="block text-sm font-semibold text-slate-800 dark:text-slate-200 mb-1.5">
                             Catatan Tambahan <span className="text-xs font-normal text-slate-500">(Opsional / Contoh Kalimat)</span>
                         </label>
                         <textarea
@@ -304,7 +304,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                             value={data.notes}
                             onChange={(e) => setData('notes', e.target.value)}
                             placeholder="Contoh kalimat: 我在学习汉语 (Saya sedang belajar bahasa Mandarin)"
-                            className="w-full px-4 py-3 bg-slate-950 border border-slate-700/80 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all resize-none text-sm"
+                            className="w-full px-4 py-3 bg-slate-100 dark:bg-slate-950 border border-slate-300/80 dark:border-slate-700/80 rounded-xl text-white placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500 transition-all resize-none text-sm"
                         />
                         {errors.notes && (
                             <p className="mt-1 text-xs text-rose-400">{errors.notes}</p>
@@ -316,7 +316,7 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 font-medium text-sm transition-colors"
+                            className="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-slate-100 dark:bg-slate-800 font-medium text-sm transition-colors"
                         >
                             Batal
                         </button>

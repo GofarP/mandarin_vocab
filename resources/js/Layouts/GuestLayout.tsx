@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 
 export default function Guest({ children }: PropsWithChildren) {
     return (
-        <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-hidden selection:bg-rose-500 selection:text-white">
+        <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 flex flex-col items-center justify-center p-4 sm:p-6 relative overflow-hidden selection:bg-rose-500 selection:text-white">
             {/* Ambient Background Glows (CSS radial gradient) */}
             <div
                 className="fixed inset-0 pointer-events-none z-0 opacity-70"
@@ -23,18 +23,18 @@ export default function Guest({ children }: PropsWithChildren) {
                     </div>
                     <div>
                         <div className="flex items-center gap-2">
-                            <span className="text-2xl font-black tracking-tight text-white">
+                            <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
                                 Hanzi<span className="text-rose-500">Vocab</span>
                             </span>
                         </div>
-                        <span className="text-xs text-slate-400 font-medium">
+                        <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                             华语生词本 · Belajar Mandarin
                         </span>
                     </div>
                 </Link>
 
                 {/* Form Card */}
-                <div className="w-full bg-slate-900/95 border border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-rose-950/20">
+                <div className="w-full bg-white dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-rose-500/5 dark:shadow-rose-950/20">
                     {children}
                 </div>
 

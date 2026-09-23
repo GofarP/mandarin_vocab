@@ -45,7 +45,7 @@ export default function VocabCard({
     };
 
     return (
-        <div className="group relative glass-card rounded-2xl p-6 flex flex-col justify-between overflow-hidden border border-slate-800/80 bg-slate-900/60 hover:border-rose-500/40 hover:bg-slate-900/90 transition-all duration-300">
+        <div className="group relative glass-card rounded-2xl p-6 flex flex-col justify-between overflow-hidden border border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/60 hover:border-rose-500/40 hover:bg-white/90 dark:bg-slate-900/90 transition-all duration-300">
             {/* Top glowing ambient accent (CSS radial gradient for zero GPU blur overhead) */}
             <div
                 className="absolute -top-12 -right-12 w-32 h-32 pointer-events-none transition-opacity duration-300 opacity-60 group-hover:opacity-100"
@@ -62,7 +62,7 @@ export default function VocabCard({
                             className={`p-2 rounded-xl border transition-all ${
                                 isPlaying
                                     ? 'bg-rose-500 text-white border-rose-400 shadow-lg shadow-rose-500/30 scale-105'
-                                    : 'bg-slate-800/70 text-slate-300 border-slate-700/60 hover:bg-rose-500/20 hover:text-rose-400 hover:border-rose-500/40'
+                                    : 'bg-slate-100/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-300/60 dark:border-slate-700/60 hover:bg-rose-500/20 hover:text-rose-400 hover:border-rose-500/40'
                             }`}
                             title="Dengarkan Pengucapan (Audio TTS)"
                         >
@@ -72,7 +72,7 @@ export default function VocabCard({
                         <button
                             type="button"
                             onClick={copyToClipboard}
-                            className="p-2 rounded-xl bg-slate-800/70 text-slate-300 border border-slate-700/60 hover:bg-slate-700 hover:text-white transition-all"
+                            className="p-2 rounded-xl bg-slate-100/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border border-slate-300/60 dark:border-slate-700/60 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-white transition-all"
                             title="Salin Karakter Hanzi"
                         >
                             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -85,7 +85,7 @@ export default function VocabCard({
                                 <button
                                     type="button"
                                     onClick={() => onEdit(vocab)}
-                                    className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-amber-400/10 transition-colors"
+                                    className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-amber-400 hover:bg-amber-400/10 transition-colors"
                                     title="Edit Kosakata"
                                 >
                                     <Edit2 className="w-4 h-4" />
@@ -95,7 +95,7 @@ export default function VocabCard({
                                 <button
                                     type="button"
                                     onClick={() => onDelete(vocab)}
-                                    className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-400/10 transition-colors"
+                                    className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-rose-400 hover:bg-rose-400/10 transition-colors"
                                     title="Hapus Kosakata"
                                 >
                                     <Trash2 className="w-4 h-4" />
@@ -115,10 +115,10 @@ export default function VocabCard({
                     </p>
                     {showPhonetics && (
                         <div
-                            className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950/80 border border-slate-800 text-xs font-mono text-amber-300/95 shadow-sm"
+                            className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-100/80 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 text-xs font-mono text-amber-300/95 shadow-sm"
                             title="Cara baca latin untuk lidah Indonesia"
                         >
-                            <span className="text-slate-500 font-sans text-[10px] uppercase font-semibold">baca:</span>
+                            <span className="text-slate-400 dark:text-slate-500 font-sans text-[10px] uppercase font-semibold">baca:</span>
                             <span className="font-bold tracking-wide">[ {vocab.dibaca?.trim() || pinyinToIndonesianReading(vocab.pinyin)} ]</span>
                         </div>
                     )}
@@ -126,18 +126,18 @@ export default function VocabCard({
 
                 {/* Meaning / Arti */}
                 <div className="mt-4 pt-4 border-t border-slate-800/80">
-                    <div className="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">
+                    <div className="text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold mb-1">
                         Arti
                     </div>
-                    <p className="text-base font-medium text-slate-200 leading-snug">
+                    <p className="text-base font-medium text-slate-800 dark:text-slate-200 leading-snug">
                         {vocab.meaning}
                     </p>
                 </div>
 
                 {/* Optional Notes */}
                 {vocab.notes && (
-                    <div className="mt-3 p-2.5 rounded-xl bg-slate-950/50 border border-slate-800/60 text-xs text-slate-400 flex items-start gap-2">
-                        <BookOpen className="w-3.5 h-3.5 text-slate-500 mt-0.5 flex-shrink-0" />
+                    <div className="mt-3 p-2.5 rounded-xl bg-slate-100/50 dark:bg-slate-950/50 border border-slate-200/60 dark:border-slate-800/60 text-xs text-slate-400 dark:text-slate-500 dark:text-slate-400 flex items-start gap-2">
+                        <BookOpen className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
                         <span className="leading-relaxed line-clamp-3">{vocab.notes}</span>
                     </div>
                 )}

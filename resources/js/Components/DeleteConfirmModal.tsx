@@ -24,7 +24,7 @@ export default function DeleteConfirmModal({ isOpen, onClose, vocab }: DeleteCon
     return (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md flex items-center justify-center p-4">
             <div
-                className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden animate-fadeIn"
+                className="relative w-full max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden animate-fadeIn"
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="flex items-center justify-between mb-4">
@@ -34,7 +34,7 @@ export default function DeleteConfirmModal({ isOpen, onClose, vocab }: DeleteCon
                     <button
                         type="button"
                         onClick={onClose}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 dark:text-slate-400 hover:text-white hover:bg-slate-100 dark:bg-slate-800 transition-colors"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -43,7 +43,7 @@ export default function DeleteConfirmModal({ isOpen, onClose, vocab }: DeleteCon
                 <h3 className="text-lg font-bold text-white mb-2">
                     Hapus Kosakata Ini?
                 </h3>
-                <p className="text-sm text-slate-300 mb-4">
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-4">
                     Apakah Anda yakin ingin menghapus kosakata{' '}
                     <span className="font-chinese font-bold text-white text-base">"{vocab.hanzi}"</span> ({vocab.pinyin})? Tindakan ini tidak dapat dibatalkan.
                 </p>
@@ -52,7 +52,7 @@ export default function DeleteConfirmModal({ isOpen, onClose, vocab }: DeleteCon
                     <button
                         type="button"
                         onClick={onClose}
-                        className="px-4 py-2 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 text-sm font-medium transition-colors"
+                        className="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-white hover:bg-slate-100 dark:bg-slate-800 text-sm font-medium transition-colors"
                     >
                         Batal
                     </button>

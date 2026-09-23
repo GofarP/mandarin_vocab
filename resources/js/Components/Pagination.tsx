@@ -33,7 +33,7 @@ export default function Pagination({ links }: PaginationProps) {
                         return (
                             <div
                                 key={index}
-                                className="px-3 py-2 text-sm text-slate-500 bg-slate-900/50 rounded-lg cursor-not-allowed border border-transparent flex items-center justify-center min-w-[2.5rem]"
+                                className="px-3 py-2 text-sm text-slate-400 dark:text-slate-500 bg-white/50 dark:bg-slate-900/50 rounded-lg cursor-not-allowed border border-transparent flex items-center justify-center min-w-[2.5rem]"
                             >
                                 {content}
                             </div>
@@ -42,7 +42,7 @@ export default function Pagination({ links }: PaginationProps) {
                     return (
                         <div
                             key={index}
-                            className="px-3 py-2 text-sm text-slate-500 bg-slate-900/50 rounded-lg cursor-not-allowed border border-transparent flex items-center justify-center min-w-[2.5rem]"
+                            className="px-3 py-2 text-sm text-slate-400 dark:text-slate-500 bg-white/50 dark:bg-slate-900/50 rounded-lg cursor-not-allowed border border-transparent flex items-center justify-center min-w-[2.5rem]"
                             dangerouslySetInnerHTML={{ __html: link.label }}
                         />
                     );
@@ -56,7 +56,7 @@ export default function Pagination({ links }: PaginationProps) {
                             className={`px-3 py-2 text-sm rounded-lg transition-colors flex items-center justify-center min-w-[2.5rem] ${
                                 link.active
                                     ? 'bg-rose-600 text-white font-bold shadow-md'
-                                    : 'bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800'
+                                    : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-white border border-slate-800'
                             }`}
                             preserveScroll
                         >
@@ -72,7 +72,7 @@ export default function Pagination({ links }: PaginationProps) {
                         className={`px-3 py-2 text-sm rounded-lg transition-colors flex items-center justify-center min-w-[2.5rem] ${
                             link.active
                                 ? 'bg-rose-600 text-white font-bold shadow-md'
-                                : 'bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800'
+                                : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:bg-slate-800 hover:text-white border border-slate-800'
                         }`}
                         preserveScroll
                         dangerouslySetInnerHTML={{ __html: link.label }}
