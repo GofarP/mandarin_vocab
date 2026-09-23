@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Head, Link, router } from '@inertiajs/react';
 import axios, { AxiosError } from 'axios';
 import { 
@@ -14,7 +14,9 @@ import {
     MessageCircle,
     Edit2,
     Trash2,
-    PenTool
+    PenTool,
+    Search,
+    ChevronLeft
 } from 'lucide-react';
 import VocabFormModal from '@/Components/VocabFormModal';
 import DeleteConfirmModal from '@/Components/DeleteConfirmModal';
@@ -181,10 +183,32 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
     const [suggestedHanzi, setSuggestedHanzi] = useState<string | null>(null);
     const [showCanvas, setShowCanvas] = useState(false);
 
+    // History Pagination & Search
+    const [historySearch, setHistorySearch] = useState('');
+    const [historyPage, setHistoryPage] = useState(1);
+    const historyItemsPerPage = 10;
+
     // Update historicalVocabs when memorizedVocabs prop changes (e.g. after Edit/Delete)
     useEffect(() => {
         setHistoricalVocabs(memorizedVocabs || []);
     }, [memorizedVocabs]);
+
+    const filteredHistory = useMemo(() => {
+        if (!historySearch.trim()) return historicalVocabs;
+        const query = historySearch.toLowerCase();
+        return historicalVocabs.filter(v => 
+            v.hanzi.toLowerCase().includes(query) || 
+            (v.pinyin && v.pinyin.toLowerCase().includes(query)) || 
+            (v.meaning && v.meaning.toLowerCase().includes(query))
+        );
+    }, [historicalVocabs, historySearch]);
+
+    const totalHistoryPages = Math.max(1, Math.ceil(filteredHistory.length / historyItemsPerPage));
+    const paginatedHistory = filteredHistory.slice((historyPage - 1) * historyItemsPerPage, historyPage * historyItemsPerPage);
+
+    useEffect(() => {
+        setHistoryPage(1); // Reset to page 1 on search change
+    }, [historySearch]);
     
     // Focus on Pinyin input by default since Hanzi is optional
     const dumpPinyinRef = useRef<HTMLInputElement>(null);
@@ -610,14 +634,27 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                         {/* List of successfully remembered words */}
                         {historicalVocabs.length > 0 && (
                             <div className="mt-8 animate-fadeIn overflow-hidden bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-2xl shadow-xl">
-                                <div className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest p-4 border-b border-slate-300/80 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-950/50">
-                                    <MessageCircle className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                                    Riwayat Kosakata Hafalan ({historicalVocabs.length})
+                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 border-b border-slate-300/80 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-950/50">
+                                    <div className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest">
+                                        <MessageCircle className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
+                                        Riwayat Kosakata Hafalan ({filteredHistory.length})
+                                    </div>
+                                    <div className="relative">
+                                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                                        <input
+                                            type="text"
+                                            value={historySearch}
+                                            onChange={(e) => setHistorySearch(e.target.value)}
+                                            placeholder="Cari kata..."
+                                            className="w-full sm:w-64 pl-9 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-sm text-slate-700 dark:text-slate-300">
                                         <thead className="bg-slate-100/80 dark:bg-slate-950/80 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
                                             <tr>
+                                                <th className="py-4 px-6 font-semibold w-12 text-center">#</th>
                                                 <th className="py-4 px-6 font-semibold">Hanzi</th>
                                                 <th className="py-4 px-6 font-semibold">Pinyin</th>
                                                 <th className="py-4 px-6 font-semibold">Arti / Makna</th>
@@ -626,8 +663,11 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60">
-                                            {historicalVocabs.map((v) => (
+                                            {paginatedHistory.length > 0 ? paginatedHistory.map((v, index) => (
                                                 <tr key={v.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors animate-slideIn">
+                                                    <td className="py-3 px-6 text-center font-medium text-slate-400 dark:text-slate-500">
+                                                        {(historyPage - 1) * historyItemsPerPage + index + 1}
+                                                    </td>
                                                     <td className="py-3 px-6 font-chinese text-2xl font-bold text-slate-900 dark:text-white">
                                                         {v.hanzi}
                                                     </td>
@@ -667,10 +707,39 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            ))}
+                                            )) : (
+                                                <tr>
+                                                    <td colSpan={6} className="py-8 text-center text-slate-500">
+                                                        Tidak ada kata yang cocok dengan pencarian "{historySearch}".
+                                                    </td>
+                                                </tr>
+                                            )}
                                         </tbody>
                                     </table>
                                 </div>
+                                {totalHistoryPages > 1 && (
+                                    <div className="flex items-center justify-between px-6 py-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+                                        <span className="text-sm text-slate-500 dark:text-slate-400">
+                                            Halaman <span className="font-semibold text-slate-900 dark:text-white">{historyPage}</span> dari <span className="font-semibold text-slate-900 dark:text-white">{totalHistoryPages}</span>
+                                        </span>
+                                        <div className="flex items-center gap-2">
+                                            <button
+                                                onClick={() => setHistoryPage(p => Math.max(1, p - 1))}
+                                                disabled={historyPage === 1}
+                                                className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50 disabled:hover:bg-transparent transition-colors"
+                                            >
+                                                <ChevronLeft className="w-4 h-4" />
+                                            </button>
+                                            <button
+                                                onClick={() => setHistoryPage(p => Math.min(totalHistoryPages, p + 1))}
+                                                disabled={historyPage === totalHistoryPages}
+                                                className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50 disabled:hover:bg-transparent transition-colors"
+                                            >
+                                                <ChevronRight className="w-4 h-4" />
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
 
