@@ -87,8 +87,8 @@ class PracticeController extends Controller
 
         // Try Exact Pinyin match
         if (!$vocab && !empty($pinyin)) {
-            // Case insensitive exact match
-            $vocab = Vocab::whereRaw('LOWER(pinyin) = ?', [strtolower($pinyin)])->first();
+            // Case insensitive exact match that respects accents
+            $vocab = Vocab::whereRaw('BINARY LOWER(pinyin) = ?', [mb_strtolower($pinyin, 'UTF-8')])->first();
         }
 
         // Try Normalized Pinyin match ONLY if they typed ascii only (no tones)
