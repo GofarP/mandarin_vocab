@@ -85,8 +85,14 @@ class PracticeController extends Controller
             $vocab = Vocab::where('hanzi', $hanzi)->first();
         }
 
-        // Try Pinyin match in existing Vocabs if Hanzi not found or provided
-        if (!$vocab && !empty($normalizedInput)) {
+        // Try Exact Pinyin match
+        if (!$vocab && !empty($pinyin)) {
+            // Case insensitive exact match
+            $vocab = Vocab::whereRaw('LOWER(pinyin) = ?', [strtolower($pinyin)])->first();
+        }
+
+        // Try Normalized Pinyin match ONLY if they typed ascii only (no tones)
+        if (!$vocab && !empty($normalizedInput) && preg_match('/^[a-zA-Z\s]+$/', $pinyin)) {
             $allVocabs = Vocab::all(['id', 'hanzi', 'pinyin', 'meaning']);
             foreach ($allVocabs as $v) {
                 $dbPinyin = strtolower(preg_replace('/[^a-z]/', '', \Illuminate\Support\Str::ascii($v->pinyin)));
