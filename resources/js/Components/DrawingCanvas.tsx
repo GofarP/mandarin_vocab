@@ -24,16 +24,19 @@ export default function DrawingCanvas({ backgroundText, onDrawStart, onClear }: 
         setAllCompleted(false);
 
         const newWriters = chars.map((char, index) => {
+            const isDark = document.documentElement.classList.contains('dark') || window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
             // Create a wrapper div for each character
             const div = document.createElement('div');
-            div.className = "relative bg-white dark:bg-slate-900 rounded-xl border border-slate-700/50 shadow-inner shrink-0 transition-colors duration-300";
+            // touch-none is CRITICAL to prevent mobile browsers from hijacking touch and messing up SVG coordinates
+            div.className = "relative bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700/50 shadow-inner shrink-0 transition-colors duration-300 touch-none select-none";
             
             // Add Tian Zi Ge grid background
             div.innerHTML = `
                 <div class="absolute inset-0 pointer-events-none opacity-20 z-0">
-                    <div class="absolute top-1/2 left-0 w-full border-t border-dashed border-slate-400"></div>
-                    <div class="absolute left-1/2 top-0 h-full border-l border-dashed border-slate-400"></div>
-                    <div class="absolute inset-0 border-2 border-slate-500 rounded-xl"></div>
+                    <div class="absolute top-1/2 left-0 w-full border-t border-dashed border-slate-900 dark:border-slate-400"></div>
+                    <div class="absolute left-1/2 top-0 h-full border-l border-dashed border-slate-900 dark:border-slate-400"></div>
+                    <div class="absolute inset-0 border-2 border-slate-900 dark:border-slate-500 rounded-xl"></div>
                 </div>
             `;
             
@@ -49,10 +52,10 @@ export default function DrawingCanvas({ backgroundText, onDrawStart, onClear }: 
                 width: 200,
                 height: 200,
                 padding: 10,
-                strokeColor: '#f8fafc', // slate-50 (bright white for drawn strokes)
-                radicalColor: '#f8fafc', // also bright white
-                outlineColor: '#334155', // slate-700 (faded background)
-                drawingColor: '#e2e8f0', // slate-200 (color while drawing)
+                strokeColor: isDark ? '#f8fafc' : '#0f172a', // slate-50 (dark mode) vs slate-900 (light mode)
+                radicalColor: isDark ? '#f8fafc' : '#0f172a',
+                outlineColor: isDark ? '#334155' : '#cbd5e1', // slate-700 vs slate-300
+                drawingColor: isDark ? '#e2e8f0' : '#475569', // slate-200 vs slate-600
                 drawingWidth: 15,
                 showOutline: true,
                 strokeAnimationSpeed: 2,
