@@ -645,3 +645,58 @@ export const PINYIN_TONES: ToneItem[] = [
         sampleMeaning: 'Apakah (partikel tanya)',
     },
 ];
+
+/**
+ * Converts numeric pinyin (e.g., "ni3 hao3") into accented pinyin (e.g., "nǐ hǎo").
+ */
+export function convertToneNumbersToAccents(text: string): string {
+    if (!text) return text;
+
+    const tones: Record<string, string[]> = {
+        a: ['ā', 'á', 'ǎ', 'à'],
+        e: ['ē', 'é', 'ě', 'è'],
+        i: ['ī', 'í', 'ǐ', 'ì'],
+        o: ['ō', 'ó', 'ǒ', 'ò'],
+        u: ['ū', 'ú', 'ǔ', 'ù'],
+        'ü': ['ǖ', 'ǘ', 'ǚ', 'ǜ'],
+        v: ['ǖ', 'ǘ', 'ǚ', 'ǜ'], // Allow v as a shorthand for ü
+    };
+
+    return text.replace(/[a-zA-ZüÜvV]+[1-5]/g, (match) => {
+        const toneIndex = parseInt(match.slice(-1)) - 1; // 1-4 becomes 0-3
+        let word = match.slice(0, -1);
+        
+        // Tone 5 is neutral (no accent)
+        if (toneIndex === 4) {
+            return word.replace(/v/g, 'ü').replace(/V/g, 'Ü'); 
+        }
+
+        // Convert v to ü
+        word = word.replace(/v/g, 'ü').replace(/V/g, 'Ü');
+        
+        const lowerWord = word.toLowerCase();
+        let matchVowel = '';
+        
+        // Pinyin tone rules precedence:
+        if (lowerWord.includes('a')) matchVowel = 'a';
+        else if (lowerWord.includes('o')) matchVowel = 'o';
+        else if (lowerWord.includes('e')) matchVowel = 'e';
+        else if (lowerWord.includes('iu')) matchVowel = 'u';
+        else if (lowerWord.includes('ui')) matchVowel = 'i';
+        else if (lowerWord.includes('i')) matchVowel = 'i';
+        else if (lowerWord.includes('u')) matchVowel = 'u';
+        else if (lowerWord.includes('ü')) matchVowel = 'ü';
+
+        if (matchVowel) {
+            const isUpper = word.indexOf(matchVowel.toUpperCase()) !== -1;
+            const vowelToReplace = isUpper ? matchVowel.toUpperCase() : matchVowel;
+            const replacement = isUpper 
+                ? tones[matchVowel][toneIndex].toUpperCase() 
+                : tones[matchVowel][toneIndex];
+            
+            word = word.replace(vowelToReplace, replacement);
+        }
+        
+        return word;
+    });
+}

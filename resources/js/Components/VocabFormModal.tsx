@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { useForm } from '@inertiajs/react';
 import { X, Sparkles, Volume2, Save } from 'lucide-react';
 import PinyinHelper from './PinyinHelper';
-import { pinyinToIndonesianReading } from '@/utils/pinyinPhonetic';
+import { pinyinToIndonesianReading, convertToneNumbersToAccents } from '@/utils/pinyinPhonetic';
 import { Vocab } from '@/types';
 
 interface VocabFormModalProps {
@@ -48,7 +48,8 @@ export default function VocabFormModal({ isOpen, onClose, vocab = null }: VocabF
 
     if (!isOpen) return null;
 
-    const handlePinyinChange = (newPinyin: string) => {
+    const handlePinyinChange = (rawPinyin: string) => {
+        const newPinyin = convertToneNumbersToAccents(rawPinyin);
         setData((prev) => {
             const autoReading = pinyinToIndonesianReading(newPinyin);
             const prevAuto = pinyinToIndonesianReading(prev.pinyin);

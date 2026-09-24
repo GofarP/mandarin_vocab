@@ -22,7 +22,7 @@ import VocabFormModal from '@/Components/VocabFormModal';
 import DeleteConfirmModal from '@/Components/DeleteConfirmModal';
 import DrawingCanvas from '@/Components/DrawingCanvas';
 import { Vocab } from '@/types';
-import { pinyinToIndonesianReading } from '@/utils/pinyinPhonetic';
+import { pinyinToIndonesianReading, convertToneNumbersToAccents } from '@/utils/pinyinPhonetic';
 
 interface PracticeProps {
     vocabs: Vocab[];
