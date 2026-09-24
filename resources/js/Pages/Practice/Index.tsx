@@ -599,35 +599,42 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                     )}
                                 </button>
                                 
-                                {showCanvas && suggestedHanzi && (
-                                    <div className="mt-6 pt-6 border-t border-slate-700/50 animate-fadeIn">
-                                        <div className="flex items-center justify-between mb-4">
-                                            <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
-                                                <PenTool className="w-4 h-4 text-emerald-400" />
-                                                Latihan Tracing
-                                            </h3>
-                                            <button 
-                                                onClick={() => {
-                                                    setDumpHanzi(suggestedHanzi);
+                                {(() => {
+                                    const hanziToDraw = (dumpHanzi.trim() || suggestedHanzi || '').replace(/[^\u4e00-\u9fa5]/g, '');
+                                    
+                                    if (!hanziToDraw) return null;
+                                    
+                                    return (
+                                        <div className="mt-6 pt-6 border-t border-slate-700/50 animate-fadeIn">
+                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
+                                                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                                                    <PenTool className="w-4 h-4 text-emerald-400" />
+                                                    Latihan Tracing
+                                                </h3>
+                                                {suggestedHanzi && dumpHanzi !== suggestedHanzi && (
+                                                    <button 
+                                                        onClick={() => setDumpHanzi(suggestedHanzi)}
+                                                        className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors text-left sm:text-center"
+                                                    >
+                                                        Gunakan Saran ({suggestedHanzi})
+                                                    </button>
+                                                )}
+                                            </div>
+                                            <p className="text-xs text-slate-400 dark:text-slate-500 mb-4">
+                                                Gunakan <i>mouse</i> atau layar sentuh untuk melatih goresan dari hanzi yang sedang aktif.
+                                            </p>
+                                            <DrawingCanvas 
+                                                backgroundText={hanziToDraw} 
+                                                onDrawStart={() => {
+                                                    // Jika user mulai menggambar dan belum ada input di textbox, pindahkan yang sedang digambar ke textbox
+                                                    if (!dumpHanzi.trim() && suggestedHanzi) {
+                                                        setDumpHanzi(suggestedHanzi);
+                                                    }
                                                 }}
-                                                className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500 hover:text-white transition-colors"
-                                            >
-                                                Gunakan Hanzi Ini
-                                            </button>
+                                            />
                                         </div>
-                                        <p className="text-xs text-slate-400 dark:text-slate-500 dark:text-slate-400 mb-4">
-                                            Hanzi yang sesuai dengan pinyin Anda ditemukan. Anda dapat menggunakan <i>mouse</i> atau layar sentuh untuk melatih goresan di atas cetakan berikut:
-                                        </p>
-                                        <DrawingCanvas 
-                                            backgroundText={suggestedHanzi} 
-                                            onDrawStart={() => {
-                                                if (dumpHanzi !== suggestedHanzi) {
-                                                    setDumpHanzi(suggestedHanzi);
-                                                }
-                                            }}
-                                        />
-                                    </div>
-                                )}
+                                    );
+                                })()}
                             </div>
                         </div>
 
