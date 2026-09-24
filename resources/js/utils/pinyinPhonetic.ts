@@ -707,50 +707,31 @@ export function convertToneNumbersToAccents(text: string): string {
 export function convertAccentsToToneNumbers(text: string): string {
     if (!text) return text;
 
-    // Define the tone mappings (accented char -> [base char, tone number])
-    const accentMap: Record<string, [string, string]> = {
-        'ā': ['a', '1'], 'á': ['a', '2'], 'ǎ': ['a', '3'], 'à': ['a', '4'],
-        'ē': ['e', '1'], 'é': ['e', '2'], 'ě': ['e', '3'], 'è': ['e', '4'],
-        'ī': ['i', '1'], 'í': ['i', '2'], 'ǐ': ['i', '3'], 'ì': ['i', '4'],
-        'ō': ['o', '1'], 'ó': ['o', '2'], 'ǒ': ['o', '3'], 'ò': ['o', '4'],
-        'ū': ['u', '1'], 'ú': ['u', '2'], 'ǔ': ['u', '3'], 'ù': ['u', '4'],
-        'ǖ': ['ü', '1'], 'ǘ': ['ü', '2'], 'ǚ': ['ü', '3'], 'ǜ': ['ü', '4'],
+    // Define the tone mappings (accented char -> base char + tone number)
+    const accentMap: Record<string, string> = {
+        'ā': 'a1', 'á': 'a2', 'ǎ': 'a3', 'à': 'a4',
+        'ē': 'e1', 'é': 'e2', 'ě': 'e3', 'è': 'e4',
+        'ī': 'i1', 'í': 'i2', 'ǐ': 'i3', 'ì': 'i4',
+        'ō': 'o1', 'ó': 'o2', 'ǒ': 'o3', 'ò': 'o4',
+        'ū': 'u1', 'ú': 'u2', 'ǔ': 'u3', 'ù': 'u4',
+        'ǖ': 'ü1', 'ǘ': 'ü2', 'ǚ': 'ü3', 'ǜ': 'ü4',
         
-        'Ā': ['A', '1'], 'Á': ['A', '2'], 'Ǎ': ['A', '3'], 'À': ['A', '4'],
-        'Ē': ['E', '1'], 'É': ['E', '2'], 'Ě': ['E', '3'], 'È': ['E', '4'],
-        'Ī': ['I', '1'], 'Í': ['I', '2'], 'Ǐ': ['I', '3'], 'Ì': ['I', '4'],
-        'Ō': ['O', '1'], 'Ó': ['O', '2'], 'Ǒ': ['O', '3'], 'Ò': ['O', '4'],
-        'Ū': ['U', '1'], 'Ú': ['U', '2'], 'Ǔ': ['U', '3'], 'Ù': ['U', '4'],
-        'Ǖ': ['Ü', '1'], 'Ǘ': ['Ü', '2'], 'Ǚ': ['Ü', '3'], 'Ǜ': ['Ü', '4']
+        'Ā': 'A1', 'Á': 'A2', 'Ǎ': 'A3', 'À': 'A4',
+        'Ē': 'E1', 'É': 'E2', 'Ě': 'E3', 'È': 'E4',
+        'Ī': 'I1', 'Í': 'I2', 'Ǐ': 'I3', 'Ì': 'I4',
+        'Ō': 'O1', 'Ó': 'O2', 'Ǒ': 'O3', 'Ò': 'O4',
+        'Ū': 'U1', 'Ú': 'U2', 'Ǔ': 'U3', 'Ù': 'U4',
+        'Ǖ': 'Ü1', 'Ǘ': 'Ü2', 'Ǚ': 'Ü3', 'Ǜ': 'Ü4'
     };
 
-    // We process word by word to properly place the tone number at the end of each syllable
-    const words = text.split(/(\s+|-)/);
-    
-    return words.map(word => {
-        if (!word.trim() || word === '-') return word;
-        
-        let toneFound = '';
-        let baseWord = '';
-        
-        // Scan the word for accented characters
-        for (let i = 0; i < word.length; i++) {
-            const char = word[i];
-            if (accentMap[char]) {
-                baseWord += accentMap[char][0];
-                toneFound = accentMap[char][1];
-            } else {
-                baseWord += char;
-            }
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        if (accentMap[char]) {
+            result += accentMap[char];
+        } else {
+            result += char;
         }
-        
-        // Append the tone number at the end of the word if a tone was found
-        if (toneFound) {
-            return baseWord + toneFound;
-        }
-        
-        // If no tone was found but it's a valid pinyin syllable, it might be neutral tone
-        // For simplicity, we just return the base word (which represents tone 5 / neutral)
-        return baseWord;
-    }).join('');
+    }
+    return result;
 }
