@@ -549,7 +549,7 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                             ref={dumpPinyinRef}
                                             type="text"
                                             value={dumpPinyin}
-                                            onChange={(e) => setDumpPinyin(e.target.value)}
+                                            onChange={(e) => setDumpPinyin(convertToneNumbersToAccents(e.target.value))}
                                             onKeyDown={handleBrainDumpKeyDown}
                                             disabled={dumpProcessing}
                                             placeholder="misal: zao shang"
