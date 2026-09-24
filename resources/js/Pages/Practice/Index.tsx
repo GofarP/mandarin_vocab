@@ -22,7 +22,7 @@ import VocabFormModal from '@/Components/VocabFormModal';
 import DeleteConfirmModal from '@/Components/DeleteConfirmModal';
 import DrawingCanvas from '@/Components/DrawingCanvas';
 import { Vocab } from '@/types';
-import { pinyinToIndonesianReading, convertToneNumbersToAccents } from '@/utils/pinyinPhonetic';
+import { pinyinToIndonesianReading, convertToneNumbersToAccents, convertAccentsToToneNumbers } from '@/utils/pinyinPhonetic';
 
 interface PracticeProps {
     vocabs: Vocab[];
@@ -678,8 +678,13 @@ export default function Practice({ vocabs, memorizedVocabs, stats }: PracticePro
                                                     <td className="py-3 px-6 font-chinese text-2xl font-bold text-slate-900 dark:text-white">
                                                         {v.hanzi}
                                                     </td>
-                                                    <td className="py-3 px-6 font-medium text-emerald-600 dark:text-emerald-400">
-                                                        {v.pinyin}
+                                                    <td className="py-3 px-6 font-medium">
+                                                        <div className="text-emerald-600 dark:text-emerald-400">
+                                                            {v.pinyin}
+                                                        </div>
+                                                        <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                                            ({convertAccentsToToneNumbers(v.pinyin)})
+                                                        </div>
                                                     </td>
                                                     <td className="py-3 px-6 text-slate-700 dark:text-slate-200">
                                                         {v.meaning}
